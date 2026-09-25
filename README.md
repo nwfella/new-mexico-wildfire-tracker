@@ -24,7 +24,7 @@ into `index.html` server-side, so the page works even where corporate IT blocks 
   (color-coded swipe strip + list)
 - **NM Fire Info news** — latest posts from the interagency New Mexico Fire Information blog
 - **No-JS fallback** — static table of the top fires renders with JavaScript disabled
-- **Zero runtime network calls** — a cron refreshes the snapshot 3× a day (00:00 / 08:00 / 16:00 MT)
+- **Zero runtime network calls** — a cron refreshes the snapshot once a day (08:00 PT / 09:00 MT)
 
 ## Data sources (all public, no API keys)
 
@@ -40,7 +40,7 @@ into `index.html` server-side, so the page works even where corporate IT blocks 
 ## How it works
 
 ```
-scripts/publish.py (Hermes cron, 3× daily)
+scripts/publish.py (Hermes cron, daily 08:00 PT)
   └─ scripts/collect.py
       ├─ fetch incidents / perimeters / AQI / alerts / fire news (parallel, keyless)
       ├─ normalize + simplify geometry (Douglas-Peucker: 55.8K raw county pts → 1.1K)
